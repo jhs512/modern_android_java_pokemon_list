@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.sbs.myapplication.ui.home.HomeFragment"
+        android:name="com.example.sbs.myapplication.ui.HomeMainFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home_main" />
 
     <fragment
         android:id="@+id/nav_gallery"

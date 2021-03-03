@@ -1,28 +1,23 @@
 package com.example.sbs.myapplication.ui;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.example.sbs.myapplication.R;
 import com.example.sbs.myapplication.databinding.ActivityMainBinding;
 import com.example.sbs.myapplication.databinding.NavHeaderMainBinding;
 import com.example.sbs.myapplication.util.Util;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import dagger.hilt.android.AndroidEntryPoint;
+import lombok.Data;
 
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
@@ -63,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Util.getMainNavController(this);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(mainBinding.navView, navController);
+
+        new TestData().setId(10);
     }
 
     @Override
@@ -76,4 +73,9 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(Util.getMainNavController(this), mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+}
+
+@Data
+class TestData {
+    private int id = 10;
 }
