@@ -43,31 +43,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(mainBinding.getRoot());
 
         // 툴바 세팅
-        Toolbar toolbar = mainBinding.appBarMain.toolbar;
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mainBinding.appBarMain.toolbar);
 
         // FAB 세팅
-        FloatingActionButton fab = mainBinding.appBarMain.fab;
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        mainBinding.appBarMain.fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
 
         // 네비게이션 드로어 세팅
-        DrawerLayout drawer = mainBinding.drawerLayout;
-        NavigationView navigationView = mainBinding.navView;
-
-        NavHeaderMainBinding navHeaderMainBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.nav_header_main, navigationView, false);
+        NavHeaderMainBinding navHeaderMainBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.nav_header_main, mainBinding.navView, false);
         navHeaderMainBinding.setLifecycleOwner(this);
 
         navHeaderMainBinding.setVm(vm);
-        navigationView.addHeaderView(navHeaderMainBinding.getRoot());
+        mainBinding.navView.addHeaderView(navHeaderMainBinding.getRoot());
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-                .setDrawerLayout(drawer)
+                .setDrawerLayout(mainBinding.drawerLayout)
                 .build();
         NavController navController = Util.getMainNavController(this);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        NavigationUI.setupWithNavController(mainBinding.navView, navController);
     }
 
     @Override
