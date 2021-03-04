@@ -1,16 +1,17 @@
 package com.example.sbs.myapplication.dto;
 
+import com.example.sbs.myapplication.R;
+import com.example.sbs.myapplication.ui.PokemonListItemViewModel;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.HashMap;
+import java.util.Map;
 
-@Data
-@NoArgsConstructor
 public class Pokemon {
     public int id;
     public String name;
+    public Map<Integer, Object> itemViewModels;
 
     public String getImgUrl() {
         return "https://pokeres.bastionbot.org/images/pokemon/" + id + ".png";
@@ -21,5 +22,17 @@ public class Pokemon {
         this.name = name;
         String[] urlBits = url.split("/");
         this.id = Integer.parseInt(urlBits[urlBits.length - 1]);
+    }
+
+    public <T> T getItemViewModel(int layoutId) {
+        if ( itemViewModels == null ) {
+            itemViewModels = new HashMap<>();
+        }
+
+        if ( itemViewModels.get(R.layout.item_pokemon_content) == null ) {
+            itemViewModels.put(R.layout.item_pokemon_content, new PokemonListItemViewModel(this));
+        }
+
+        return (T)itemViewModels.get(R.layout.item_pokemon_content);
     }
 }

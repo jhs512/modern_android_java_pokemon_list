@@ -2,8 +2,8 @@
 <layout>
     <data>
         <variable
-            name="pokemon"
-            type="com.example.sbs.myapplication.dto.Pokemon" />
+            name="pokemonListItemViewModel"
+            type="com.example.sbs.myapplication.ui.PokemonListItemViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,10 +15,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10sp"
-            android:text="@{pokemon.name}"
+            android:text="@{pokemonListItemViewModel.pokemon.name}"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{() -> pokemonListItemViewModel.goToDetailPage()}"
+            />
     </LinearLayout>
 </layout>

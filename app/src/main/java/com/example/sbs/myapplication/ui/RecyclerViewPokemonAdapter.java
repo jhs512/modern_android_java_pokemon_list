@@ -65,7 +65,8 @@ public class RecyclerViewPokemonAdapter extends RecyclerView.Adapter<RecyclerVie
             FooterViewHolder footerViewHolder = (FooterViewHolder) holder;
         } else {
             ContentViewHolder contentViewHolder = (ContentViewHolder) holder;
-            contentViewHolder.binding.setPokemon(data.get(position - getHeaderCount()));
+            PokemonListItemViewModel pokemonListItemViewModel = data.get(position - getHeaderCount()).getItemViewModel(R.layout.item_pokemon_content);
+            contentViewHolder.binding.setPokemonListItemViewModel(pokemonListItemViewModel);
         }
     }
 

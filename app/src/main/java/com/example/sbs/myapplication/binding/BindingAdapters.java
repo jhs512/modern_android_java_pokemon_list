@@ -3,11 +3,13 @@ package com.example.sbs.myapplication.binding;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.BindingConversion;
 import androidx.lifecycle.MutableLiveData;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
@@ -48,5 +50,10 @@ public class BindingAdapters {
     @BindingAdapter({"isVisible"})
     public static void loadImage(ImageView imageView, boolean isVisible) {
         imageView.setVisibility(isVisible ? View.VISIBLE : View.GONE);
+    }
+
+    @BindingAdapter({"adapter"})
+    public static void setAdapter(RecyclerView recyclerView, RecyclerView.Adapter adapter) {
+        recyclerView.setAdapter(adapter);
     }
 }

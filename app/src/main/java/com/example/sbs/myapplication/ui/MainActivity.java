@@ -17,7 +17,6 @@ import com.example.sbs.myapplication.util.Util;
 import com.google.android.material.snackbar.Snackbar;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import lombok.Data;
 
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
@@ -58,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Util.getMainNavController(this);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(mainBinding.navView, navController);
-
-        new TestData().setId(10);
     }
 
     @Override
@@ -73,9 +70,4 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(Util.getMainNavController(this), mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-}
-
-@Data
-class TestData {
-    private int id = 10;
 }

@@ -1,6 +1,7 @@
 package com.example.sbs.myapplication.util;
 
 import android.app.Application;
+import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -37,7 +38,15 @@ public class Util {
         return navController;
     }
 
+    public static NavController getMainNavController() {
+        return navController;
+    }
+
     public static void toast(String msg) {
         Toast.makeText(application, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void setTimeout(Runnable r, int delay) {
+        new android.os.Handler(Looper.getMainLooper()).postDelayed(r, delay);
     }
 }
